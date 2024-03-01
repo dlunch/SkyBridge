@@ -175,6 +175,7 @@ Future<bsky.Session?> sessionFromContext(RequestContext context) async {
         final refreshedSession = await bsky.refreshSession(
           refreshJwt: session.refreshJwt,
           mockedPostClient: httpClient.post,
+          service: 'pds.dlun.ch',
         );
 
         // Update the session in the database.
@@ -233,6 +234,7 @@ Future<bsky.Bluesky?> blueskyFromContext(RequestContext context) async {
     session,
     mockedGetClient: httpClient.get,
     mockedPostClient: httpClient.post,
+    service: 'pds.dlun.ch',
   );
 }
 
@@ -272,6 +274,7 @@ Future<bsky.Session?> createBlueskySession({
       identifier: identifier,
       password: appPassword,
       mockedPostClient: httpClient.post,
+      service: 'pds.dlun.ch',
     );
 
     // If we've gotten this far, the credentials are valid.

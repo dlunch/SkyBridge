@@ -18,7 +18,7 @@ Future<Response> onRequest(RequestContext context, String id) async {
   // If the token is invalid, bail out and return an error.
   final session = await sessionFromContext(context);
   if (session == null) return authError();
-  final bluesky = bsky.Bluesky.fromSession(session);
+  final bluesky = bsky.Bluesky.fromSession(session, service: 'pds.dlun.ch');
 
   // If we're being asked for pinned posts we return nothing because
   // Bluesky does not have a concept of pinned posts.
